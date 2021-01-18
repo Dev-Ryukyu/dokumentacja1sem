@@ -1,0 +1,695 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Projekt I sem.</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8eb24a45-22d3-4f27-81e5-d6226f3d1e46" class="page sans"><header><h1 class="page-title">Projekt I sem.</h1></header><div class="page-body"><p id="da154d4d-4cbd-4eac-bc14-9a25628c7e60" class="">
+</p><h3 id="6296cfaa-374d-40cc-b474-d7525b85d761" class="">Uniwersytet Przyrodniczo-Humanistyczny w Siedlcach</h3><h3 id="daf2f1a3-4af9-484b-a1b9-9551fe027d2c" class="">Kierunek Informatyka</h3><p id="38241d6b-ec02-40dc-8fdc-666045b7d108" class="">
+</p><h3 id="4271f4fd-079b-4e9f-8548-d04c51edd2d5" class="">Imię i nazwisko studenta</h3><p id="cae2a607-c5ea-40d1-b06a-f9334b215f4e" class="">Mateusz Urbanek</p><p id="82af20d2-81d9-4e36-9f52-d2985a4ddcf3" class="">
+</p><h3 id="8adf0fb8-3729-40a7-98e4-78a5d4a4f59f" class="">Temat zadania</h3><p id="839977af-8192-449e-9428-ce00fb9251e8" class="">Dany jest plik binarny zawierający dane pracowników: imię, nazwisko, adres, stanowisko, staż pracy, pobory zasadnicze, dodatki. Napisz program, który umożliwi obliczenie wysokości wypłaty, obliczy i wypisze średnią miesięczna wypłatę dla podanego stanowiska, dodanie danych nowego pracownika, usunięcie danych, edycję a także posortowanie elementów pliku rosnąco lub malejąco (wybór użytkownika) wg. podanego kryterium. Podaj rozwiązanie bez tablic pomocniczych.</p><p id="b01c3f44-de14-4182-963e-6ddef6cf193e" class="">
+</p><h3 id="62cae974-084c-47bd-a537-e05a57b35e54" class="">Praca wykonana pod kierunkiem</h3><p id="1dd4ddf4-70d7-4923-a26d-c9a6f33fe1b8" class="">Anna Kołkowicz</p><p id="1352f06d-eb1f-43ff-9e9c-7641cd4a9cc9" class="">
+</p><p id="917c221b-2123-4000-a38f-0cd39071bee9" class="">
+</p><h3 id="a9dc89fa-348a-415e-a26d-4f5d70d7bb8c" class="">Siedlce, 2021</h3><p id="eb82acb2-cf43-4d70-bde4-3456d827ecec" class="">
+</p><p id="c8c51332-277a-4c7b-ac13-f4c672af87a7" class="">
+</p><h1 id="2c4d3136-d5db-438d-9ee0-f20a4f8d8b36" class="">Spis treści</h1><ol id="8f4b81f4-3cee-402a-8639-f887739f0128" class="numbered-list" start="1"><li>Specyfikacja wymagań (2-3str.)</li></ol><ol id="5446f2c9-6d03-438c-ae7f-efc368f9db6e" class="numbered-list" start="2"><li>Opis wybranych funkcji (3-8str.)</li></ol><ol id="4c6e6c06-89d4-42da-a070-a93115682856" class="numbered-list" start="3"><li>Schematy blokowe (8-65str.)</li></ol><ol id="49569212-4a06-4499-82a4-4fa082ce9c77" class="numbered-list" start="4"><li>Przykładowe dane i wyniki (66-67str.)</li></ol><ol id="28940195-3989-4531-b13b-17c56726ec9e" class="numbered-list" start="5"><li>Instrukcja dla użytkownika (68str.)</li></ol><h1 id="e48716de-73bd-4d39-babe-892842fd4c97" class="">1. Specyfikacja wymagań</h1><p id="2d660860-3538-4356-860d-18e03dddf4df" class="">
+</p><p id="cf59aa4c-bca3-4a33-bc7b-bee8204edec8" class="">System służy do wspomagania zarządzania kadrami poprzez naliczanie wynagrodzeń oraz przechowywanie wrażliwych danych o pracownikach w firmach do 60 osób.</p><p id="5dc693ba-266c-404b-9277-7183628815e9" class="">
+</p><p id="524724f9-3be1-4ac4-9300-7b881d43cc40" class="">System tworzy baze danych w pliku binarnym (o rozszerzeniu. dat) która przechowuje dane pracowników w rekordach o poniższym schemacie :</p><p id="eb630603-9a31-458d-9597-c039118663b6" class=""><strong>ID</strong> – numer pracownika w kolejności od początku do końca pliku.
+<strong>Pesel</strong> – składa się z 11 cyfr.</p><p id="0b782482-add1-487c-b281-d54ac93a91b9" class=""><strong>Imię</strong> – maksymalnie 30 znaków.
+<strong>Nazwisko</strong> – maksymalnie 40 znaków.
+<strong>Adres</strong> – maksymalnie 50 znaków.
+<strong>Stanowisko </strong>– maksymalnie 40 znaków.
+<strong>Staż pracy</strong> – maksymalnie 6 cyfr.
+<strong>Pobory zasadnicze</strong> – maksymalnie 9 cyfr.
+<strong>Dodatki</strong> – maksymalnie 9 cyfr.</p><blockquote id="4c88dcef-cae0-48ba-a609-6054629f6db0" class="">Gdy użytkownik wprowadzi liczbę 8 cyfrowa (na przykład 12345678), system odczyta ten pesel jako 00012345678.</blockquote><blockquote id="70d8df5a-219f-4786-b51a-255feff81dd3" class="">Najmniejsza jednostka pola pobory oraz dodatki to jeden grosz. Oznacza to, że na przykład dodatki = 1000 będą oznaczać 1000gr., czyli 10zł . Z tego względu maksymalna wartość tych pól musi być mniejsza, niż 10 mln zł.</blockquote><p id="912cd9cb-b309-442b-9404-0287375e466b" class="">
+</p><h1 id="1ab019da-a42f-4e6c-910a-9263b0182451" class="">2. Opis funkcji</h1><h3 id="396381c7-261d-47ba-aca8-dde9c18170cc" class="">void dodaj_pracownika(string nazwa);</h3><p id="9e32f30c-2b11-4367-993a-0eb2819c2d14" class="">Wywołuje funkcje wczytaj_pracownika.
+Przekazuje jej wartość wraz z nazwa do funkcji przekaz_pracownika.</p><p id="a7b243ab-3a9e-4487-9a10-9a53d409b84c" class="">
+</p><h3 id="f9d1c3df-b2d9-416b-8f34-4bf98be669d9" class="">struct pracownik wczytaj_pracownika(string nazwa);</h3><p id="486323a9-ffe2-45e1-a685-7731c7132dc9" class="">Funkcja oczekuje od użytkownika wpisania każdego elementu struktury pracownik po czym ja zwraca.</p><p id="079910b0-3bff-461b-8cbc-ac374b73f255" class="">
+</p><h3 id="ff25c2a1-ec4d-4c39-b4e3-1b56acfd0959" class=""><strong>void przekaz_pracownik</strong>a(string na<strong>zwa,pracownik p);</strong></h3><p id="ec853388-d52f-48e4-bdb6-57f440b8f39b" class="">Zapisuje strukturę (pracownik p) na końcu pliku binarnego (string nazwa).</p><p id="95e8d83e-89fe-4c1d-8f41-d306e227868e" class="">
+</p><h3 id="c9a8cfb6-7cf2-4c8e-8c06-10256a24f372" class="">void usun_pracownika(string nazwa,int id);</h3><p id="bf7edac7-0978-449b-beff-324882111524" class="">1. Tworzy nowy plik z dopiskiem &quot;new_&quot; do nazwy. </p><p id="99be9acb-6ca5-4c6c-bfd9-7d246da72774" class="">2. Zapisuje do tego pliku wszystkie struktury z wyjątkiem tego którego kolejność jest równa argumentowi id. </p><p id="24f31e87-aaa5-4230-9c17-d6a8d509d85e" class="">3. Usuwa stary plik (bez &quot;new_&quot;) po czym zmienia nazwę nowego na stary.</p><p id="0089a52e-7f8c-41df-9de1-d05509c5d39b" class="">
+</p><h3 id="ca9654f9-2ffa-4c68-a4d8-36019206505f" class="">void wypisz_pracownikow(string nazwa)</h3><p id="88858cbe-071c-45e4-89ec-34b1bd29bf16" class="">Wypisuje wszystkie struktury pracownik z pliku (string nazwa);</p><p id="eaccadb7-e914-4074-9a4d-c239b9d02c27" class="">
+</p><h3 id="4305d8f3-794f-4296-be0b-e63b77e1c08d" class="">void wypisz_pracownikow_wizualnie(string nazwa);</h3><p id="7d66c1b0-fcf1-4306-8c7c-a90b22ccc88f" class="">Wypisuje strukturę pracownik z pliku (string nazwa) w atrakcyjnej wizualnie formie.</p><p id="68af0745-4656-4678-b36d-5a871f1823d1" class="">
+</p><h3 id="8804e5d0-b0ac-40fb-aea2-7ff630b5d2d1" class="">void wypisz_pracownikow_naglowek();</h3><p id="4e2c383e-788c-48b3-83ba-f767c1a6979c" class="">Wypisuje nagłówek w kolorze potrzebny do wyświetlenia funkcji wypisz_pracownikow_wizualnie.();</p><p id="249b6789-67f3-4e8e-8cc4-c793d40a89cb" class="">
+</p><h3 id="c0f0411c-a782-4817-be0f-5e721d4d5b27" class="">void edycja_pracownika(string nazwa,int n);</h3><p id="53c9a62a-eb64-4755-a8b4-9eafb7585d5b" class="">Wywołuje funkcje wczytaj_pracownika(nazwa) po czym zapisuje ja na indeksie podanym przez użytkownika.</p><p id="0cacdbd3-6c16-403d-8fe0-1aa869609c4d" class="">
+</p><h3 id="bc4de0c8-a29e-4199-9ea0-9fb0b2175223" class="">void zamien_pracownika(string nazwa,int a,int b);</h3><p id="7005e281-4fa2-4f80-ae1d-ade1c9eacd0a" class="">Zamienia 2 struktury pracownik z pliku (string nazwa) o indeksach a oraz b.</p><p id="2150fd0f-05c1-4f03-96bc-d4028d46a7e8" class="">
+</p><h3 id="2c3e1261-35d6-4890-a17b-4c3f77a182b0" class="">void bubbleSort(string napis,int n,int m)</h3><p id="f78df354-0608-468a-9e08-5a5d7f801a0a" class="">Sortuje plik algorytmem bąbelkowym gdzie m jest sposobem sortowania a n elementem.</p><p id="bfb716a6-a7e6-4e1b-b305-c1c9a7be8908" class="">
+</p><h3 id="a3c25acb-fcbb-43fd-ab9c-06ffb76b0087" class="">int ilosc_pracownikow(string napis);</h3><p id="bd01ccc4-3967-4188-a4b4-74bc869a7d02" class="">Zwraca ile struktur (pracownik) znajduje sie w pliku.</p><p id="bacbcbd9-ba87-43dd-8017-22fcc42cbc30" class="">
+</p><h3 id="cff7c0d4-54b1-4d5e-ba43-29525f0e853a" class="">int sprawdz_pesel(string nazwa,long long int pesel);</h3><p id="1e72d5c2-3f3c-48ed-b61d-316baf7b63b7" class="">Sprawdza czy podany pesel jest juz w pliku (zwraca 0 w przypadku fałszu, 1 w przypadku prawdy).</p><p id="009268de-3d92-40c0-ade2-1777b46a5d5c" class="">
+</p><h3 id="22ef08f4-6034-4da9-9843-6cecb8720b1d" class="">void oblicz_wyplate(string nazwa,int n);</h3><p id="96ad1ca9-388c-4474-8b5f-81409e46f323" class="">Liczy i wypisuje średnia miesięczną wypłatę dla podanego pracownika (pobory zasadnicze + dodatki).</p><p id="8d97ba1c-422f-4db1-9bcd-87df795b9cbd" class="">
+</p><h3 id="2a0134dc-7384-4880-8cb3-ff797a17a685" class="">string losowe_imie();</h3><p id="4acad63f-68a0-49c8-b345-3f168549a3dc" class="">Losuje i zwraca 1 z 15 imion.</p><p id="67743d42-4747-47c2-b2ac-b74326af9044" class="">
+</p><h3 id="dfd3341f-3837-47f0-add4-909f937eb5e3" class="">string losowe_nazwisko();</h3><p id="b95d541d-f0a9-4dfd-ab63-326ea6acb8da" class="">Losuje i zwraca 1 z 15 nazwisk.</p><p id="ec3cec66-3157-494e-81d4-605b93d38797" class="">
+</p><h3 id="9e2ba924-98e7-4c5d-a06e-bbadab00afb1" class="">string losowe_adres();</h3><p id="76b1fce1-5b15-4b85-8e37-7ceefe350080" class="">Losuje i zwraca 1 z 15 adresów.</p><p id="f9a20563-f4a5-483e-b729-db3a4fe5fd3f" class="">
+</p><h3 id="f902d8a6-7304-4d46-a13e-19547a44b42e" class="">string losowe_stanowisko();</h3><p id="e51d1bb2-33b1-4062-b632-ef165566c26d" class="">Losuje i zwraca 1 z 15 stanowisk</p><p id="2d4f50da-7bcf-441e-80f2-45ab9f281076" class="">
+</p><h3 id="f73199b3-a0a6-4a95-80c7-36b8e8ab9abd" class="">struct pracownik generuj_pracownika(int maxi_i,double maxi_d);</h3><p id="78b9e586-7119-4e52-b80f-37d817a8f2bd" class="">Generuje strukturę pracownik składająca się z predefiniowanych danych znakowych oraz losowych liczb. </p><p id="0b84e2ca-c623-412e-8e02-089d10eb905f" class="">max_i to maksymalna wartość zmiennej typu int dla student.staz_pracy. </p><p id="b734de03-2e46-4b25-bfe6-cd0a26ad7a62" class="">maxi_d to maksymalna wartość dla student.pobory_zasadnicze i student.dodatki.</p><p id="10643503-4fe9-4efc-b688-e7d5a0d2ffb6" class="">
+</p><h3 id="cfa991dc-5fa0-45da-8015-91e59ae9d77f" class="">void dodaj_gen_pracownika(string nazwa);</h3><p id="b21c9d20-1440-41d5-b085-f7c4be978b0f" class="">Wywołuje funkcje generuj_pracownika i zapisuje ja do pliku.</p><p id="31e71d0b-7b55-4a3a-aa55-3fc2dbcdc986" class="">
+</p><h3 id="a542de99-b3ac-4f3c-84e7-72855a2c6eaa" class="">long long int potega(int podstawa,int wykladnik);</h3><p id="ca894278-0a01-432a-a024-ee4217330fa9" class="">Potęguje podstawę do wykładnika (dla liczb całkowitych).</p><p id="dff7f90b-7cd1-442a-a819-a699a047d1aa" class="">
+</p><h3 id="1444d48d-0914-4f93-bbfe-8b7f2148230d" class="">double rand_d(double fMin, double fMax);</h3><p id="3a06a0cf-aa75-4517-ae9c-987162ceee6d" class="">Losuje zmienna typu double od fMIn do fMax.</p><p id="5464868b-ddb6-443e-8315-8cff6980c3f7" class="">
+</p><h3 id="d0772464-8382-48c3-8885-f0f93b33b99b" class="">long long int n_number(int n,string nazwa);</h3><p id="3b4ab72b-efc7-4451-a671-b1c7a5aabc88" class="">Zwraca n cyfrowa liczbe.</p><p id="43aadce0-8591-4ba8-bd7f-0401f2788500" class="">
+</p><h3 id="cc2676a5-ec98-4a2c-9b04-c79db0e5190b" class="">int dodatnia(long long int x);</h3><p id="a7af6904-7191-4cc7-b237-6867447b4f3e" class="">Sprawdza czy liczba jest nieujemna.</p><p id="7a7227d4-a3c2-4260-9023-639df9fc313b" class="">
+</p><h3 id="f045b903-d85d-41d8-a93d-d980f69c59a5" class="">bool kontrola_poprawnosci(long long int x);</h3><p id="e90cc4e6-2e85-4912-aeac-106336cbadd9" class="">Kontrola poprawności dla liczb całkowitych.</p><p id="3e978d27-65d2-4812-a022-9caa5a1a8109" class="">
+</p><h3 id="81bbde05-0789-45cb-ae35-1021ecc67581" class="">int wybierz_int();</h3><p id="68e13887-6102-4621-b97b-653f6b65525b" class="">Wczytuje i sprawdza poprawność zmiennej typu int.</p><p id="65e91f7a-c072-44e5-9052-1baafc1744fd" class="">
+</p><h3 id="26e8ff02-78dd-4db7-94b9-85c3f05edc22" class="">void start();</h3><p id="fbeca5fc-9cc5-465c-8745-f872b4cc3895" class="">Od niej wszystko sie zaczyna.</p><p id="afdfe662-21f4-4a90-a876-674903aa2f77" class="">
+</p><h3 id="032e579d-c5c0-43ca-9f89-4622659467f9" class="">void wypisz_opcje(string napis,int n);</h3><p id="cc93aca1-cf91-4482-9dc7-4fe4d198e5d0" class="">Otwiera i wypisuje zawartość pliku tekstowego jako menu do wybrania</p><p id="a5d28075-7b46-433a-8c1d-a72e7484f6fc" class="">
+</p><h3 id="1e8d49d3-a54f-4bf5-8d42-14c14d6ffe53" class="">void wypisz_w_kolorze(string napis,int n);</h3><p id="7695cfe8-7edb-49f6-a29a-79bed02f6ca4" class="">Wypisuje stringa w n kolorze</p><p id="9f25c507-8139-4426-83d5-ee8a9c805b21" class="">
+</p><h3 id="49cadaea-c50c-4eed-9e63-8da4f1b7d8aa" class="">void menu(string napis,int n, int c);</h3><p id="e855f689-50bd-46c2-a067-3c3693f45265" class="">Współpracuje z funkcja wypisz_opcje. 
+W celu dodania interaktywnosci mozliwosc wybierania strzalkami w gore, dol oraz enterem. 
+n - wybrane miejsce na którym jest kursor. 
+c - czy czyścić ekran przy wywołaniu ( 0 = tak )</p><p id="d61e2ec2-a42d-4ffb-8057-9b95f9661716" class="">
+</p><h3 id="9ebea3b0-cb83-4bd4-8d92-4d266fce3251" class="">void menu_sortowania(string napis,int n,int c);</h3><p id="f999ea7d-5e07-4ac2-972a-ac4dc58a7fd7" class="">Wyświetla menu, po jakim elemencie struktury sortować (pesel/imie/nazwisko...). 
+n - wybrane miejsce, na którym jest kursor. 
+c - czy czyścić ekran przy wywołaniu ( 0 = tak ).</p><p id="4c592fad-b9f4-40f0-809a-682d02798b6f" class="">
+</p><h3 id="69391fd9-d59c-4b3b-b2f3-b815c4ff6528" class="">void menu_s_sortowania(string napis,int n,int wybor);</h3><p id="e7fc0160-923f-4232-bc4d-efb9bdc7c0f8" class="">Wyświetla menu z rodzajem sortowania (rosnąco/malejąco/wróć). </p><p id="e52d9ded-3e01-4038-a63c-ace477a111f8" class="">n - wybrane miejsce, na którym jest kursor. </p><p id="cc1fca89-fad2-46d8-b828-ee14d6249a76" class="">wybor - wartosc n z funkcji menu_sortowania (po jakim elemencie sortować).</p><p id="f94d7e1d-4f2b-4e67-8cdb-51bd9d3bbe59" class="">
+</p><h3 id="8426d043-96e2-4b93-96c1-1a6288bd5e93" class="">void wybierz_sort(string napis,int r_m,int ktore_sortowac);</h3><p id="ec5a9aa4-6b6d-40cc-9c12-1a6369393ddb" class="">Uruchamia funkcje bubble_sort(napis,ktore_sortowac,r_m) lub menu_sortowania(napis,1) zależnie od wartości argumentu ktore_posortowac.</p><p id="7cc4f692-eb65-499a-a8d0-11ea0ecde0c4" class="">
+</p><h3 id="f99ab89f-06aa-472f-b436-6b8bbe49b94e" class="">int il_linii(string napis);</h3><p id="d4ee2c8b-f4f5-40f4-8bd3-f39be60223b1" class="">Zwraca ilość linii w pliku tekstowym.</p><p id="53ac5e5f-67ff-4b24-8955-bad19adb3f80" class="">
+</p><h3 id="636abf3d-8e4d-417e-8061-23f043dc7e64" class="">void wybierz_opcje(string napis,int n);</h3><p id="5cc4c3ab-0cd3-4d2f-b3d2-fae0a09e449b" class="">Wywołuje kolejne funkcje zależnie od wartości argumentu n</p><p id="9eb604bd-016a-48d6-929a-98185b2efa63" class="">
+</p><h1 id="8dceeff2-838d-4b8f-a681-258b40922d36" class="">3. Schematy blokowe</h1><p id="a2231a81-ae88-4595-a6ec-fda171163c82" class="">
+</p><h3 id="28e67446-eed1-4158-bbcc-6e3c4a999382" class="">void dodaj_pracownika(string nazwa);</h3><figure id="b0f56f57-d25b-4a68-8dec-00fd829a56fc" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/dodaj_pracownika.png"><img style="width:282px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/dodaj_pracownika.png"/></a></figure><p id="e9793f1f-e067-4850-a05e-c5158feea5f4" class="">
+</p><h3 id="7965525b-5ec5-485e-a3f4-1e854fd0e135" class="">struct pracownik wczytaj_pracownika(string nazwa);</h3><figure id="6243de0b-5a23-416c-b88d-8cab9cbff0c0" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled.png"><img style="width:823px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled.png"/></a></figure><h3 id="11101118-0b9b-41d6-b313-113bc24c4a05" class=""><strong>void przekaz_pracownik</strong>a(string na<strong>zwa,pracownik p);</strong></h3><figure id="96977523-5822-4453-9c2a-69e56799b848" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%201.png"><img style="width:416px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%201.png"/></a></figure><h3 id="a2bf12e0-25c5-4cfb-b4b0-1ce41c9a0cf8" class="">void usun_pracownika(string nazwa,int id);</h3><figure id="3aa65119-4521-458f-83c4-68f9f21ab8b9" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%202.png"><img style="width:806px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%202.png"/></a></figure><h3 id="2629cf09-860f-4b64-b878-d8ebda3a99c4" class="">void wypisz_pracownikow(string nazwa)</h3><figure id="408efd73-dbda-4940-95b9-3dc42ca2fffb" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%203.png"><img style="width:795px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%203.png"/></a></figure><h3 id="9bc1fcd5-c8ab-4bc6-99f3-f83e9551efc4" class="">void wypisz_pracownikow_wizualnie(string nazwa);</h3><figure id="68a435cf-3cd7-41e0-93d6-9fdf9a22759c" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%204.png"><img style="width:659px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%204.png"/></a></figure><figure id="fc7d8a99-abd9-42a1-ab59-a503a35914e0" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%205.png"><img style="width:663px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%205.png"/></a></figure><figure id="e7db7617-968d-4673-bbd0-304359dae6f0" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%206.png"><img style="width:660px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%206.png"/></a></figure><figure id="f28a5ecf-8e59-4286-982d-2428663a9bcd" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%207.png"><img style="width:656px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%207.png"/></a></figure><figure id="ae31e133-159e-4ef6-bc6b-88911819e003" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%208.png"><img style="width:650px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%208.png"/></a></figure><figure id="ce455628-b23c-4146-9dca-616281d8017a" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%209.png"><img style="width:654px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%209.png"/></a></figure><h3 id="f34a1443-e2d2-41fd-8af1-365e696cafdd" class="">void wypisz_pracownikow_naglowek();</h3><figure id="48596307-73f9-4975-af8c-a05b4872ad8a" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2010.png"><img style="width:779px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2010.png"/></a></figure><h3 id="cb92b071-a701-49d7-b2b0-0d5de899eaa3" class="">void edycja_pracownika(string nazwa,int n);</h3><figure id="dcc813d6-0ddd-4009-b0d2-acf511f69cc7" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2011.png"><img style="width:531px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2011.png"/></a></figure><h3 id="ece286a3-ca0b-4397-8200-24fa775a7a58" class="">void zamien_pracownika(string nazwa,int a,int b);</h3><figure id="147a9e3d-3d36-43ed-8d71-9f7e12495bd0" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2012.png"><img style="width:531px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2012.png"/></a></figure><h3 id="a249f7cf-c624-4c03-a8fc-a7bb18dd436c" class="">void bubbleSort(string napis,int n,int m)</h3><figure id="3920bb26-753c-47ee-9ee6-787221c976a5" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2013.png"><img style="width:871px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2013.png"/></a></figure><figure id="d68240c0-b25c-4ca1-b879-8357c6e9dca4" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2014.png"><img style="width:821px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2014.png"/></a></figure><figure id="55518695-18e7-4240-8981-eb9119805a3c" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2015.png"><img style="width:758px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2015.png"/></a></figure><figure id="4ff9cd0e-252f-4f41-bb6a-0d58b6da48ee" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2016.png"><img style="width:631px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2016.png"/></a></figure><figure id="a6822c3b-0305-4506-bdee-9bb8893912c7" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2017.png"><img style="width:611px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2017.png"/></a></figure><figure id="ec9b5651-ddf2-41b1-90dd-afc2aa451ce2" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2018.png"><img style="width:697px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2018.png"/></a></figure><figure id="50bc1e1c-56ed-4ef0-85e8-fe0394813af1" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2019.png"><img style="width:693px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2019.png"/></a></figure><figure id="01f1155d-8d57-45e4-917f-d530232fb8a7" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2020.png"><img style="width:628px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2020.png"/></a></figure><figure id="9fad8d1f-4272-4d30-bfbf-ffd9a1c04edf" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2021.png"><img style="width:643px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2021.png"/></a></figure><figure id="7ac913aa-8c95-4765-9689-a5db59b63566" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2022.png"><img style="width:645px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2022.png"/></a></figure><figure id="1474408d-3710-4122-b20f-6432a05069b4" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2023.png"><img style="width:663px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2023.png"/></a></figure><figure id="b5b2e20e-9838-4676-a05e-6bc087df3c66" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2024.png"><img style="width:600px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2024.png"/></a></figure><figure id="5b9e0c81-fa1c-4e84-898d-523e71f4b782" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2025.png"><img style="width:616px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2025.png"/></a></figure><figure id="a921b2c5-5fad-479e-955c-d7d26b6495eb" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2026.png"><img style="width:609px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2026.png"/></a></figure><figure id="50ada5df-0894-490f-8869-7c28e7de5f62" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2027.png"><img style="width:621px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2027.png"/></a></figure><figure id="875de711-cf71-43e0-8df2-68f81784308c" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2028.png"><img style="width:575px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2028.png"/></a></figure><figure id="31fe5798-dc1e-4174-b5e1-95e4982045fc" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2029.png"><img style="width:556px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2029.png"/></a></figure><h3 id="00cd1411-0420-4c94-98ce-79b96c245466" class="">int ilosc_pracownikow(string napis);</h3><figure id="3e12e6d6-81f2-402c-8f21-9965c6fe0919" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2030.png"><img style="width:271px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2030.png"/></a></figure><h3 id="49efd7f2-8f57-4d81-bf43-20465d69abd0" class="">int sprawdz_pesel(string nazwa,long long int pesel);</h3><figure id="9ea8cf50-97be-4c6c-998f-348c2d195cb9" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2031.png"><img style="width:811px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2031.png"/></a></figure><h3 id="bb5bca8f-18f3-4d55-8482-ffc299713ee8" class="">void oblicz_wyplate(string nazwa,int n);</h3><figure id="e33597f0-11bd-477f-9648-346c0d27f0aa" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2032.png"><img style="width:431px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2032.png"/></a></figure><h3 id="fec8a18a-8a0a-42d3-bb10-b3cb371fc2a8" class="">string losowe_imie();</h3><figure id="e43aec88-9000-4270-9e0b-2318a8c96958" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2033.png"><img style="width:206px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2033.png"/></a></figure><h3 id="61e6a5cd-4390-42ee-b071-119de1063f64" class="">string losowe_nazwisko();</h3><p id="3336f350-7d1f-4e81-8463-3245635fb578" class="">
+</p><figure id="3d987770-8f11-47ce-8e54-d2cd04fb2e51" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2034.png"><img style="width:206px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2034.png"/></a></figure><h3 id="f601bc6c-e832-4917-ae6c-121a128147ef" class="">string losowe_adres();</h3><figure id="f3466c36-d421-4804-864e-60602ca1cf05" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2035.png"><img style="width:206px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2035.png"/></a></figure><h3 id="9550a024-3bc7-4dd9-b5cc-f46251f26d74" class="">string losowe_stanowisko();</h3><figure id="32b22f21-f541-4d41-bd18-e35068bbd274" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2036.png"><img style="width:206px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2036.png"/></a></figure><h3 id="6e0fb760-8ffb-4d15-ab50-25e0459660d3" class="">struct pracownik generuj_pracownika(int maxi_i,double maxi_d);</h3><figure id="6bcea6e8-6642-40ed-be5f-ff20049e2c56" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2037.png"><img style="width:364px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2037.png"/></a></figure><h3 id="72ab9299-a2c2-421f-bede-9c6388f5df85" class="">void dodaj_gen_pracownika(string nazwa);</h3><figure id="474d5196-7475-4abc-82dc-cef0b2cb6e8c" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2038.png"><img style="width:436px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2038.png"/></a></figure><h3 id="5b96fb8e-7dd3-4aaf-8f6e-b988dd0b1160" class="">long long int potega(int podstawa,int wykladnik);</h3><figure id="894a3bfd-5d96-4f51-9000-b48a05a8aaad" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2039.png"><img style="width:439px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2039.png"/></a></figure><h3 id="cd1fad03-df8b-4a0c-b0fc-be4f3fa9dd53" class="">double rand_d(double fMin, double fMax);</h3><figure id="f7084a2a-1717-4595-b9e3-a3dd8fde3d53" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2040.png"><img style="width:348px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2040.png"/></a></figure><h3 id="029d549d-3fb5-40fb-a386-1ea6a5ae0406" class="">long long int n_number(int n,string nazwa);</h3><figure id="f7c79e5c-4e30-4ffa-8aa1-dfd394e99198" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2041.png"><img style="width:719px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2041.png"/></a></figure><h3 id="4a8b4dd1-7820-4a34-b0ee-04b6fb9ff2d0" class="">int dodatnia(long long int x);</h3><figure id="5295ad84-1ec1-435c-bcf8-a065003ce232" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2042.png"><img style="width:587px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2042.png"/></a></figure><h3 id="24c1877c-5ff3-41c2-b696-902669708127" class="">bool kontrola_poprawnosci(long long int x);</h3><p id="5e002cc9-84a8-4e07-8733-512255c50d1e" class="">
+</p><figure id="f47a6c51-5cfc-40a1-923d-d65d0e5adb68" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2043.png"><img style="width:771px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2043.png"/></a></figure><h3 id="1a86496a-a940-4938-a095-c1ae3c581f47" class="">int wybierz_int();</h3><figure id="9dadec78-ffaf-4249-b4af-1ead015cd84a" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2044.png"><img style="width:639px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2044.png"/></a></figure><h3 id="8237c43a-a9e4-423a-a923-def852dd5731" class="">void start();</h3><p id="cea02284-b9ef-4e3f-90fa-d1fc44d97a59" class="">
+</p><figure id="a719f781-c67d-4d88-b386-79a8f1bb6920" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2045.png"><img style="width:411px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2045.png"/></a></figure><h3 id="d1f53058-55d6-42a6-9aa3-bdb53a4b33d6" class="">void wypisz_opcje(string napis,int n);</h3><figure id="0d6769cf-560c-4021-8a01-25af2eaabd3b" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2046.png"><img style="width:768px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2046.png"/></a></figure><h3 id="7f026057-2fc6-48b8-a79c-1a28dbc8f910" class="">void wypisz_w_kolorze(string napis,int n);</h3><figure id="e3052810-727a-4b58-b402-fd90fd538d85" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2047.png"><img style="width:506px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2047.png"/></a></figure><h3 id="8dbb6d41-8c33-4e0a-88d2-0ff5e96691fa" class="">void menu(string napis,int n, int c);</h3><figure id="594a069a-376c-488c-8640-b0d7f66287c7" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2048.png"><img style="width:816px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2048.png"/></a></figure><h3 id="11fd7524-eee9-4ade-b872-d1e7ce4b3868" class="">void menu_sortowania(string napis,int n,int c);</h3><figure id="3b13f47d-bd57-487e-bdd4-291b771d4af8" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2049.png"><img style="width:811px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2049.png"/></a></figure><h3 id="89eebb14-6e00-40ea-a10a-63a7826a8e26" class="">void menu_s_sortowania(string napis,int n,int wybor);</h3><figure id="4ba3e814-01e5-46b3-b37c-b12a3ec7d28d" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2050.png"><img style="width:811px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2050.png"/></a></figure><h3 id="402f97a6-cad6-4313-a9d9-40749747052f" class="">int il_linii(string napis);</h3><figure id="e2c06bdb-5011-4687-b334-4b4aa334952b" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2051.png"><img style="width:539px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2051.png"/></a></figure><h3 id="b9243c9d-fea3-4d2b-9a39-49be63dd2270" class="">void wybierz_opcje(string napis,int n);</h3><figure id="b287e317-4fbc-4537-a3ba-e2a63a01bb24" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2052.png"><img style="width:819px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2052.png"/></a></figure><h1 id="33ff6faf-019f-40cb-b48e-a7f082d6bddd" class="">4. Przykładowe dane i wyniki</h1><h3 id="2900c11a-ed6d-43e3-b251-2931d2bdcd49" class="">Startowe menu oraz jego wyglad</h3><figure id="6622146c-8e19-41d4-961e-fea9d97707cd" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2053.png"><img style="width:979px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2053.png"/></a></figure><h3 id="0a7f56f3-4eb0-429b-b0bb-4135046579e3" class="">Wyglad wyplaty pracownika</h3><figure id="24e76b31-bf25-44fc-b68c-bd175f20512a" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2054.png"><img style="width:978px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2054.png"/></a></figure><figure id="fb06a57e-e6a3-4499-820f-bb390af4a0c0" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2055.png"><img style="width:977px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2055.png"/></a></figure><h3 id="817e1332-cb50-4505-a864-e64151697b0b" class="">Wyglad bazy danych</h3><figure id="5ebe6db3-1681-4dfe-9a25-6c929ea44c29" class="image"><a href="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2056.png"><img style="width:1920px" src="Projekt%20I%20sem%20b0f56f57d25b4a688dec00fd829a56fc/Untitled%2056.png"/></a></figure><p id="9ae2cc81-114d-4bf8-826f-d7f7891c3231" class="">
+</p><p id="7c742674-b01b-4030-8ad2-c13c997509a0" class="">
+</p><p id="f29ed0e9-cec0-44b6-ad95-57c176efa4cf" class="">
+</p><p id="df3c50d1-e07d-42d5-9428-b9734ac6fe13" class="">
+</p><p id="8cc52fff-ecd3-4ce7-b5a1-9cd343c482de" class="">
+</p><h1 id="e4702c60-d8eb-4a17-b27c-f61e96106e70" class="">5. Instrukcja dla użytkownika</h1><blockquote id="096d217d-1219-40f0-a03d-b66d1767fbf8" class="">W celu wybrania jednej z możliwych opcji użytkownik nawiguję strzałkami w górę oraz w dół po czym wciska enter w celu wybrania dalszych możliwości.</blockquote><blockquote id="ed079c28-9f73-409e-a02a-c4efda4084eb" class="">Domyślny plik, na którym jest wykonywana praca to „data. dat” w celu jego zmiany należy przy uruchomieniu wybrać opcje nr 11.</blockquote><blockquote id="28dbb766-27f9-4aa6-8873-5d2c10c7113f" class="">W celu poprawnego wyświetlenia bazy danych (opcja nr 8) użytkownik powinien rozszerzyć okno swojej konsoli na tyle, aby w jednej linii można było zmieścić minimum 212 znaków. Jeżeli to nie jest możliwe proszę korzystać z opcji nr 2.</blockquote></div></article></body></html>
